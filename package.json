@@ -1,0 +1,20 @@
+{
+  "name": "devtinder",
+  "version": "1.0.0",
+  "description": "Tinder for developers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev" :"nodemon src/app.js"
+    },
+  "keywords": [
+    "tinder",
+    "dev"
+  ],
+  "author": "Deshavath Venkateswara Naik",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
