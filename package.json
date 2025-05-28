@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "dev" :"nodemon src/app.js"
-    },
+    "dev": "nodemon src/app.js"
+  },
   "keywords": [
     "tinder",
     "dev"
@@ -15,6 +15,7 @@
   "author": "Deshavath Venkateswara Naik",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "mongoose": "^8.15.1"
   }
 }
