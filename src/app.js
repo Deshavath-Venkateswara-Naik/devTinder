@@ -8,7 +8,7 @@ const User = require("./models/user");
 
 app.post("/signup",async(req,res)=>{
     const user =new User({
-        firstName:"Venkatesh",
+        firstName:"Venkatesh Naik",
         lastName:"Naik",
         emailId:"Venkateshnaik@gmail.com",
         password:"venkatesh@123"
