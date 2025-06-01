@@ -6,23 +6,44 @@ const connectDB = require("./config/database");
 const User= require("./models/user");
 
 app.use(express.json());
-app.post("/signup",async(req,res)=>{
-    const user =new User(req.body);
-try{
-    await user.save();
-    res.send("User added Successfully");
 
+app.get("/signup",async(req,res)=>{
+    const userEmail =req.body.emailId;
+   try{
+       const user = await User.findOne({emailId:userEmail});
+       res.send(user);
+   }catch(error){
+       res.status(400).send("error saving the user:"+error.message);
+   }
+   });
+app.post("/signup",async(req,res)=>{
+try{
+    const user = await User(req.body);
+    await user.save();
+    res.send(user);
 }catch(error){
     res.status(400).send("error saving the user:"+error.message);
 }
 });
 
-
-
-
-
-
-
+app.put("/signup",async(req,res)=>{
+    const userEmail =req.body.emailId;
+   try{
+       const user = await User.findOneAndUpdate({emailId:userEmail},{firstName:"deshavath Venkateswara Naik"},{new:true});
+       res.send(user);
+   }catch(error){
+       res.status(400).send("error saving the user:"+error.message);
+   }
+});
+app.delete("/signup",async(req,res)=>{
+    const userEmail =req.body.emailId;
+   try{
+       const user = await User.findOneAndDelete({emailId:userEmail});
+       res.send(user);
+   }catch(error){
+       res.status(400).send("error saving the user:"+error.message);
+   }
+});
 
 
 
