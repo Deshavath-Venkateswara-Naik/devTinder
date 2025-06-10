@@ -1,25 +1,33 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
+
 const userSchema = new mongoose.Schema({
-firstName: {
-type: String,
-required: true, // must have a name
-},
-lastName: {
-type: String,
-required: true,
-unique: true, // no duplicate emails
-},
-emailId: {
-type: String,
-required: true,
-unique: true,  // if not provided, age will be 18
-},
-password: {
+  firstName: {
     type: String,
     required: true,
-    unique: true,  // if not provided, age will be 18
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
+  emailId: {
+    type: String,
+    required: true,
+    unique: true,
+    validate: {
+      validator: (value) => validator.isEmail(value),
+      message: "Invalid email"
     }
+  },    
+  password: {
+    type: String,
+    required: true,
+    unique: true,
+    select: true
+  }
+}, {
+  timestamps: true
 });
-const User = mongoose.model('User', userSchema);
 
+const User = mongoose.model('User', userSchema);
 module.exports = User;
